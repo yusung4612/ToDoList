@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>To do list</title>
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+            rel="stylesheet">
+    <link rel="stylesheet" href="style.css" th:href="@{style.css}">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div>
+    <h1 th:text="${member.get().getMembername()+'의 Todo 리스트입니다.'}"></h1>
+</div>
+<!--<div class="form-register" style=" padding-left: 1400px; padding-top: 20px;">-->
+<!--    <button type="submit" class="btn btn-primary" style="font-weight: 400; color: white" ;>Register</button>-->
+<!--    <a type="button" th:href="@{/}" class="btn btn-info" style="color: black;">Main page</a>-->
+<!--</div>-->
+<div id="todolist" style="text-align: left;
+                     max-width: 700px;
+                     margin: auto;
+                     background: linear-gradient(135deg, #02aab0, #00cdac);">
+
+    <div style="padding-left: 20px; padding-top: 20px;">
+
+            <button type="submit" class="btn btn-primary" style="font-weight: 400; color: white" ;>Register</button>
+            <a type="button" th:href="@{/}" class="btn btn-info" style="color: white; background-color:gray;">Main
+                page</a>
+            <!--        검색창-->
+                <form th:action="@{/todosearch}" th:object="${searches}" method="get">
+                    <input type="text" name="searchKeyword" style="border: 0px;" th:field="*{keyword}">
+                    <button type="submit" style="border: 0;">검색</button>
+                </form>
+
+    </div>
+
+    <h1 style="margin: 0px;
+                padding-top: 10px;
+                padding-bottom: 5px;
+                text-align: center;
+                color: white; margin-bottom: 5px;">To do list</h1>
+
+    <div style="margin: 0px 80px 5px 70px;
+                display: flex;
+                justify-content: space-between;">
+        <form action="todolist.html" th:action="@{/todolist/__${member.get().getId()}__}"
+              th:object="${todo}" method="post" style="padding-left: 43px">
+            <!--                        <label>할 일</label>-->
+            <input style="width: 450px;
+                          height: 30px;
+                          border-radius: 15px;
+                          border: 1px solid #fbe7c6;
+                          padding: 20px 100px 10px 80px;" type="text" th:field="*{content}"/>
+            <button type="submit" class="fas fa-plus-circle" style="background-color: transparent;
+                                                                      font-size: 30px;
+                                                                      line-height: 80px;
+                                                                      margin-left: 5px;
+                                                                      color: white;
+                                                                      border: 0px;"></button>
+        </form>
+    </div>
+</div>
+
+
+    <div style="text-align: left;
+                     max-width: 700px;
+                     margin: auto;
+                     background-color: 	#dcdcdc;">
+            <div th:each="todolist: ${member.get().getContent()}">
+<!--                <form action="todolist.html" th:object="${todo}" th:action="@{/todolist/delete(id=${todolist.getId()})}" method="get" >-->
+                <span th:text="${todolist.getContent()}"></span>
+                <a style="text-decoration: none;color:red" th:href="@{/todolist/delete(id=${todolist.getId()},member=${todolist.getMember().getId()})}">x</a>
+            </div>
+    </div>
+
+
+<!--할 일 검색-->
+<!--<th:block th:each="page:${#numbers.sequence(startPage,endPage)}">-->
+<!--    <a th:if="${page != nowPage}" th:href="@{/board/list(page=${page-1}, searchKeyword=${param.searchKeyword})}"-->
+<!--       th:text="${page}"></a>-->
+<!--    <strong th:if="${page==nowPage}" th:text="${page}" style="color:red"></strong>-->
+
+<!--</th:block>-->
+
+</body>
+</html>

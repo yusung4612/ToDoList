@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <title>Registration</title>
+</head>
+
+<body style="line-height: 2.5;">
+<div class="card" style="width: 300px; margin-left: auto; margin-right: auto; border: none; margin-top: 100px;">
+    <h1 class="display-4 mb-3" style="font-size: 40px; text-align: center;">Registrantion</h1>
+    <p th:if="${ error != null }" class="bg-danger">
+        <small th:text="${error}" class="text-light"></small>
+    </p>
+
+    <form action="register.html" th:action="@{/register}" th:object="${member}" method="post">
+        <div>
+            <label>이름</label>
+            <input type="text" id="membername" class="form-control" th:field="*{membername}"/>
+        </div>
+
+        <div>
+            <label>나이</label>
+            <input type="text" id="age" class="form-control" th:field="*{age}"/>
+        </div>
+
+        <div>
+            <label>이메일</label>
+            <input type="email" id="email" class="form-control" th:field="*{email}"/>
+        </div>
+
+        <div>
+            <label>비밀번호</label>
+            <input type="password" id="password" class="form-control" th:field="*{password}"/>
+        </div>
+
+        <div>
+            <label>비밀번호확인</label>
+            <input type="password" id="passwordConfirm" class="form-control" th:field="*{passwordConfirm}"/>
+        </div>
+        <div>
+            <div class="form-register" style="text-align: center; padding-top: 20px;">
+                <button type="submit" class="btn btn-primary" style="font-weight: 400; color: white";>Register</button>
+                <a type="button" th:href="@{/}" class="btn btn-info" style="color: white";>Main page</a>
+            </div>
+        </div>
+    </form>
+
+</body>
+</html>
