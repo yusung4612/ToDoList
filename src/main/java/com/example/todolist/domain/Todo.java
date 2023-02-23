@@ -1,10 +1,8 @@
 package com.example.todolist.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @NoArgsConstructor
@@ -21,12 +19,20 @@ public class Todo {
     private String content;
 
     @Column(name="is_completed")
-    private Boolean isCompleted;
+    private boolean isCompleted;
 
     @Column(name="starred")
-    private Boolean starred;
+    private boolean starred;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="member_id")
     private Member member;
+
+    public void starUpdate(boolean key){
+        this.starred=key;
+    }
+    public void completeUpdate(boolean key){
+        this.isCompleted=key;
+    }
+
 }
