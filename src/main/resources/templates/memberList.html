@@ -26,13 +26,22 @@
         </select>
     </label>
 </div>
-<div class="modal" style="position: fixed;
-  top: 20%;
-  left: 38%;
+<div class="modal" style="
+        top: 10px;
+        left: 10px;
+
+        width: 30%;
+        height: 30%;
+
+        border-style: groove;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #02aab0, #00cdac);
+  top: 25%;
+  left: 35%;
  ;">
     <div id="moid" class="modal_content">
         <form action="todolist.html" th:action="@{/passwordCheck}" th:object="${password}" method="post">
-            <input type="text" id="membername" placeholder="이름을 입력 해주세요" th:field="*{membername}">
+            <input style="margin-top: 20%; margin-left: 12%" type="text" id="membername" placeholder="이름을 입력 해주세요" th:field="*{membername}">
             <input type="password" id="password" placeholder="비밀번호를 입력해주세요" th:field="*{password}"/>
             <button type="submit" id="completeBtn">완료</button>
         </form>

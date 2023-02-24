@@ -2,16 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
     <title>Todo List</title>
 </head>
 <body>
-<h1>투두 리스트 메인페이지 입니다.</h1>
-<div>
-    <a th:href="@{/}">메인 페이지</a>
-    <a th:href="@{/register}">회원가입</a>
-    <a th:href="@{/memberlist}">멤버리스트</a>
-<!--    <a th:href="@{/todolist}">To do list</a>-->
+<!--<span th:style="'background-image:url('+ @{/img/bg.jpg} +');'"></span>-->
+<h1 style="text-align: center; font-size: 100px; margin-top: 7%">Everybot</h1>
+<h2 style="text-align: center; font-size: 130px; margin-top: auto">To Do List</h2>
 
+<div style="margin-left: 40%; margin-top: 4%">
+        <!--    <a th:href="@{/}">메인 페이지</a>-->
+        <a th:href="@{/register}" class="btn btn-primary"
+           style="margin-right: 10%;font-weight: 600; font-size: 150%; color: white">Sign Up</a>
+        <a th:href="@{/memberlist}" class="btn btn-primary"
+           style="margin-right: 20%;font-weight: 600; font-size: 150%; color: white; background-color: lightseagreen; border-color: #00cdac">Member List</a>
+        <!--    <a th:href="@{/todolist}">To do list</a>-->
 </div>
+
 </body>
 </html>

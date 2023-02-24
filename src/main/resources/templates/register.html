@@ -12,7 +12,7 @@
 
 <body style="line-height: 2.5;">
 <div class="card" style="width: 300px; margin-left: auto; margin-right: auto; border: none; margin-top: 100px;">
-    <h1 class="display-4 mb-3" style="font-size: 40px; text-align: center;">Registrantion</h1>
+    <h1 class="display-4 mb-3" style="font-size: 40px; text-align: center; font-weight: 500;">Registrantion</h1>
     <p th:if="${ error != null }" class="bg-danger">
         <small th:text="${error}" class="text-light"></small>
     </p>
@@ -44,8 +44,8 @@
         </div>
         <div>
             <div class="form-register" style="text-align: center; padding-top: 20px;">
-                <button type="submit" class="btn btn-primary" style="font-weight: 400; color: white";>Register</button>
-                <a type="button" th:href="@{/}" class="btn btn-info" style="color: white";>Main page</a>
+                <button type="submit" class="btn btn-primary" style="font-weight: 400; color: white";>Sign Up</button>
+                <a type="button" th:href="@{/}" class="btn btn-info" style="color: white";>Main Page</a>
             </div>
         </div>
     </form>

@@ -32,6 +32,7 @@ public class TodoController {
         return "todolist";
     }
 
+    //할 일 등록
     @PostMapping("/todolist/{id}")
     public String todoSubmit(@ModelAttribute TodoRequestDto todo, @PathVariable Long id) {
         Todo todo1 = Todo.builder()
@@ -51,7 +52,6 @@ public class TodoController {
 
         return "redirect:"+member;
     }
-    //투두 결과 페이지
 
     //할 일 검색
     @GetMapping("/todosearch")
@@ -78,6 +78,11 @@ public class TodoController {
         return "redirect:"+member;
     }
 
-
+    //할 일 수정
+//    @PostMapping("/todolist/todoUpdate")
+//    public String todoUpdate(Long id ,Long member) {
+//        todoRepository.updateById(id);
+//        return "redirect:"+member;
+//    }
 
 }

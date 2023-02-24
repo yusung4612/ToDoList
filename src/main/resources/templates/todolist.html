@@ -76,15 +76,21 @@
                      background-color: 	#dcdcdc;">
             <div th:each="todolist: ${member.get().getContent()}">
                 <hr>
+<!--할 일 중요표시-->
                 <a  th:if="${todolist.isStarred()}" th:href="@{/todolist/todoStar(id=${todolist.getId()},member=${todolist.getMember().getId()},star=${todolist.isStarred()})}" style="margin-left: 5%; text-decoration: none;color:yellow;">★</a>
                 <a  th:if="!${todolist.isStarred()}" th:href="@{/todolist/todoStar(id=${todolist.getId()},member=${todolist.getMember().getId()},star=${todolist.isStarred()})}" style="margin-left: 5%; text-decoration: none;color:black;">☆</a>
 <!--                <form action="todolist.html" th:object="${todo}" th:action="@{/todolist/delete(id=${todolist.getId()})}" method="get" >-->
+
                 <span th:text="${todolist.getContent()}"></span>
-                <!--할 일 삭제-->
+
+<!--할 일 삭제-->
                 <a style="text-decoration: none;color:red; position: absolute; right:40%;"
                    th:href="@{/todolist/delete(id=${todolist.getId()},member=${todolist.getMember().getId()})}">x</a>
-                <a th:if="${todolist.isCompleted()}" th:href="@{/todolist/todoCompleted(id=${todolist.getId()},member=${todolist.getMember().getId()} ,completed=${todolist.isCompleted()})}" style="position: absolute; left:61%; text-decoration: none;color:skyblue;">완료됨!</a>
-                <a th:if="!${todolist.isCompleted()}" th:href="@{/todolist/todoCompleted(id=${todolist.getId()},member=${todolist.getMember().getId()} ,completed=${todolist.isCompleted()})}" style="position: absolute; left:61%; text-decoration: none;color:black;">완료 안함</a>
+<!--할 일 완료표시-->
+                <a th:if="${todolist.isCompleted()}" th:href="@{/todolist/todoCompleted(id=${todolist.getId()},member=${todolist.getMember().getId()} ,completed=${todolist.isCompleted()})}" style="position: absolute; left:61%; text-decoration: none;color:skyblue;">Done</a>
+                <a th:if="!${todolist.isCompleted()}" th:href="@{/todolist/todoCompleted(id=${todolist.getId()},member=${todolist.getMember().getId()} ,completed=${todolist.isCompleted()})}" style="position: absolute; left:61%; text-decoration: none;color:black;">미완료</a>
+<!--할 일 수정-->
+<!--                <a th:if="${todolist.todoUpdate}" th:href="@{/todolist/todoUpdate(id=${todolist.getId()},member=${todolist.getMember().getId()} ,completed=${todolist.todoUpdate()})}" style="position: absolute; left:61%; text-decoration: none;color:skyblue;">Done</a>-->
                 <hr>
             </div>
     </div>
