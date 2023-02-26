@@ -7,6 +7,7 @@ import com.example.todolist.domain.Todo;
 import com.example.todolist.repository.MemberRepository;
 import com.example.todolist.repository.TodoRepository;
 import com.example.todolist.service.TodoService;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,66 +24,66 @@ public class TodoController {
     private final TodoRepository todoRepository;
     private final TodoService todoService;
 
+    //할 일 조회
     @GetMapping("/todolist/{id}")
     public String todolist(Model model, @PathVariable Long id) {
         Optional<Member> member = memberRepository.findById(id);
         model.addAttribute("member", member);
         model.addAttribute("todo", new TodoRequestDto());
-        model.addAttribute("searches",new SearchRequestDto());
+        model.addAttribute("searches", new SearchRequestDto());
         return "todolist";
     }
 
     //할 일 등록
     @PostMapping("/todolist/{id}")
     public String todoSubmit(@ModelAttribute TodoRequestDto todo, @PathVariable Long id) {
-        Todo todo1 = Todo.builder()
+        Todo todosub = Todo.builder()
                 .member(memberRepository.findById(id).get())
                 .content(todo.getContent())
                 .build();
-        todoRepository.save(todo1);
+        todoRepository.save(todosub);
         return "redirect:" + id;
     }
 
     //할 일 삭제
-    @GetMapping ("/todolist/delete")
-    public String todoDelete(Long id ,Long member)  {
-        System.out.println("삭제 에이피아이 : "+id);
-            System.out.println("삭제 돼라");
-            todoRepository.deleteById(id);
+    @GetMapping("/todolist/delete")
+    public String todoDelete(Long id, Long member) {
+//        System.out.println("삭제 에이피아이 : " + id);
+//        System.out.println("삭제 돼라");
+        todoRepository.deleteById(id);
 
-        return "redirect:"+member;
+        return "redirect:" + member;
     }
 
     //할 일 검색
     @GetMapping("/todosearch")
-    public String search(@ModelAttribute SearchRequestDto keyword ,Model model ){
-        System.out.println("keyword : " + keyword.getKeyword());
+    public String search(@ModelAttribute SearchRequestDto keyword, Model model) {
+//        System.out.println("keyword : " + keyword.getKeyword());
 
-       List<Todo> todoList=todoRepository.search(keyword.getKeyword());
-        System.out.println(todoList);
-       model.addAttribute("todolist",todoList);
-       return "searchResult";
+        List<Todo> todoList = todoRepository.search(keyword.getKeyword());
+//        System.out.println(todoList);
+        model.addAttribute("todolist", todoList);
+        return "searchResult";
     }
 
     //할 일 중요여부
     @GetMapping("/todolist/todoStar")
-    public String todoStar(Long id , Long member , boolean star) {
+    public String todoStar(Long id, Long member, boolean star) {
         todoService.todoStar(id, star);
-        return "redirect:"+member;
+        return "redirect:" + member;
     }
 
     //할 일 완료여부
     @GetMapping("/todolist/todoCompleted")
-    public String todoCompleted(Long id , Long member ,boolean completed) {
-        todoService.complete(id,completed);
-        return "redirect:"+member;
+    public String todoCompleted(Long id, Long member, boolean completed) {
+        todoService.complete(id, completed);
+        return "redirect:" + member;
     }
 
-    //할 일 수정
-//    @PostMapping("/todolist/todoUpdate")
-//    public String todoUpdate(Long id ,Long member) {
-//        todoRepository.updateById(id);
-//        return "redirect:"+member;
-//    }
-
+    @PostMapping("/todolist/update/{id}")
+    public String todoUpdate(@ModelAttribute TodoRequestDto todo, @PathVariable Long id) {
+        System.out.println("아이디" + id);
+        Long memberId = todoService.update(todo, id);
+        return "redirect:/todolist/" + memberId;
+    }
 }

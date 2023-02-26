@@ -15,7 +15,7 @@
                 color: white;">Main page</a>
 <div>
     <label>
-        <select onchange="onEvent(this.value)" style="position: fixed;
+        <select onchange="onEvent(this.value)" style="position: fixed; width: 11%; height: 38px;
                 top: 40%;
                 left:40%;">
             <option th:selected="유저선택" class="btn btn-secondary dropdown-toggle" >Member를 선택해 주세요.</option>
@@ -27,23 +27,23 @@
     </label>
 </div>
 <div class="modal" style="
-        top: 10px;
-        left: 10px;
 
         width: 30%;
-        height: 30%;
+        height: 20%;
 
         border-style: groove;
-        border-radius: 10px;
+        border-radius: 20px;
         background: linear-gradient(135deg, #02aab0, #00cdac);
-  top: 25%;
+  top: 28%;
   left: 35%;
  ;">
-    <div id="moid" class="modal_content">
+    <div id="modalid" class="modal_content">
         <form action="todolist.html" th:action="@{/passwordCheck}" th:object="${password}" method="post">
-            <input style="margin-top: 20%; margin-left: 12%" type="text" id="membername" placeholder="이름을 입력 해주세요" th:field="*{membername}">
-            <input type="password" id="password" placeholder="비밀번호를 입력해주세요" th:field="*{password}"/>
-            <button type="submit" id="completeBtn">완료</button>
+            <input style="margin-top: 13%; margin-left: 12%; border-radius: 20px; border: none;margin-left: 15%" type="text" id="membername" placeholder="이름" th:field="*{membername}">
+            <input style="border-radius: 20px; border: none; margin-left: 5%" type="password" id="password" placeholder="비밀번호" th:field="*{password}"/>
+            <br/>
+            <br/>
+            <button style="border-radius: 20px; border: none; margin-left: 43%; width: 90px" type="submit" id="completeBtn">Login</button>
         </form>
     </div>
 </div>
@@ -53,10 +53,8 @@
     var value;
     function onEvent(id){
         value=id
-        console.log("왜 안되냐")
         $(".modal").show()
     }
-
 </script>
 
 

@@ -7,10 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-@RequiredArgsConstructor
+//@RequiredArgsConstructor // 왜사용?
 public class MainController {
 
-    private final MemberRepository memberRepository;
+//    private final MemberRepository memberRepository;
 
     @GetMapping("/")
     public String main(Model model){

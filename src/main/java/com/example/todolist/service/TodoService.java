@@ -13,33 +13,37 @@ public class TodoService {
 
     public final TodoRepository todoRepository;
 
+    //할 일 중요여부
     @Transactional
     public void todoStar(Long id, boolean key){
         Todo todo=todoRepository.findById(id).get();
         if(!key){
-            System.out.println("뻘스를 투르로");
+            System.out.println("false를 true로");
             todo.starUpdate(true);
         }else{
-            System.out.println("트루를 뻘스로");
+            System.out.println("true를 false로");
             todo.starUpdate(false);
         }
     }
+
+    //할 일 완료여부
     @Transactional
     public void complete(Long id, boolean key){
         Todo todo=todoRepository.findById(id).get();
         if(!key){
-            System.out.println("뻘스를 투르로");
+            System.out.println("false를 true로");
             todo.completeUpdate(true);
         }else{
-            System.out.println("트루를 뻘스로");
+            System.out.println("true를 false로");
             todo.completeUpdate(false);
         }
     }
-    //할 일 삭제
-//    public void deleteById(Long id) {
-//        todoRepository.deleteById(id);
-//    }
-//    public void deleteAll(Long[] deletedId) {
-//        todoRepository.deleteTodo(deletedId);
-//    }
+    //할 일 수정
+    @Transactional
+    public Long update(TodoRequestDto todo, Long id){
+        Todo todoUpdate =todoRepository.findById(id).orElse(null);
+
+        todoUpdate.update(todo.getContent());
+        return todoUpdate.getMember().getId();
+    }
 }

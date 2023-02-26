@@ -10,8 +10,6 @@ import lombok.Setter;
 public class TodoRequestDto {
     private Long id;
     private Long memberId;
-    private String title; //제목
-    private String content; //내용
-//    private String writer; //작성자
+    private String content; //할 일 내용
 
 }

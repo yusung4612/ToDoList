@@ -17,7 +17,7 @@ public class Member extends Timestamped {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false) // null 값 오류가 안뜨게끔 false
+    @Column(nullable = false)
     private String membername;
 
     @Column(nullable = false)
@@ -31,22 +31,7 @@ public class Member extends Timestamped {
     private String password;
 
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    private List<Todo> comment;
     private List<Todo> content;
-
-//    public Member(String membername, Integer age, String email, String password){
-//        this.membername=membername;
-//        this.age = age;
-//        this.email = email;
-//        this.password = password;
-//    }
-
-//    public Member(MemberRequestDto requestDto) {
-//        this.membername = requestDto.getMembername();
-//        this.age = requestDto.getAge();
-//        this.email = requestDto.getEmail();
-//        this.password = requestDto.getPassword();
-//    }
 
 //    //멤버 수정
 //    public void update(MemberRequestDto requestDto) {
@@ -54,12 +39,5 @@ public class Member extends Timestamped {
 //        this.age = requestDto.getAge();
 //        this.email = requestDto.getEmail();
 //        this.password = requestDto.getPassword();
-//    }
-
-    //멤버 삭제
-//    public void delete(MemberRequestDto requestDto) {
-//        this.membername = requestDto.getMembername();
-//        this.age = requestDto.getAge();
-//        this.email = requestDto.getEmail();
 //    }
 }
