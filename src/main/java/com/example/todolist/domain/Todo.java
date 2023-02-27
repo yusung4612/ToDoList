@@ -28,6 +28,9 @@ public class Todo {
     @JoinColumn(name="member_id")
     private Member member;
 
+    public void update(String content) {
+        this.content=content;
+    }
     public void starUpdate(boolean key){
         this.starred=key;
     }
