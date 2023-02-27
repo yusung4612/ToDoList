@@ -8,6 +8,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SearchRequestDto {
+
     private Long id;
+
     private String keyword;
 }

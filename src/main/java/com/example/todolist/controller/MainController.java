@@ -7,14 +7,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-//@RequiredArgsConstructor // 왜사용?
 public class MainController {
-
-//    private final MemberRepository memberRepository;
 
     @GetMapping("/")
     public String main(Model model){
-        return "index";
+        return "index"; //메인페이지로 연결
     }
 
 

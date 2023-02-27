@@ -48,8 +48,6 @@ public class TodoController {
     //할 일 삭제
     @GetMapping("/todolist/delete")
     public String todoDelete(Long id, Long member) {
-//        System.out.println("삭제 에이피아이 : " + id);
-//        System.out.println("삭제 돼라");
         todoRepository.deleteById(id);
 
         return "redirect:" + member;
@@ -58,10 +56,10 @@ public class TodoController {
     //할 일 검색
     @GetMapping("/todosearch")
     public String search(@ModelAttribute SearchRequestDto keyword, Model model) {
-//        System.out.println("keyword : " + keyword.getKeyword());
+        System.out.println("keyword : " + keyword.getKeyword());
 
         List<Todo> todoList = todoRepository.search(keyword.getKeyword());
-//        System.out.println(todoList);
+        System.out.println(todoList);
         model.addAttribute("todolist", todoList);
         return "searchResult";
     }
@@ -80,9 +78,10 @@ public class TodoController {
         return "redirect:" + member;
     }
 
+    //할 일 수정
     @PostMapping("/todolist/update/{id}")
     public String todoUpdate(@ModelAttribute TodoRequestDto todo, @PathVariable Long id) {
-        System.out.println("아이디" + id);
+//        System.out.println("아이디" + id);
         Long memberId = todoService.update(todo, id);
         return "redirect:/todolist/" + memberId;
     }

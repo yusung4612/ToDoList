@@ -102,11 +102,10 @@
            style="position: absolute; left:61%; text-decoration: none;color:white;font-size: 20px">Done</a>
 
         <!--할 일 수정-->
-        <!--        <form action="todolist.html" th:action="@{/todolist/update/${todolist.getId()}}"-->
-<!--        <div id="modal" class="modal" style="position: absolute; background: linear-gradient(135deg, #02aab0, #00cdac);">-->
+
             <form action="todolist.html" th:action="@{/todolist/update/__${todolist.getId()}__}"
                   th:object="${todo}" method="post" style="padding-left: 43px">
-<!--                내용bar-->
+                <!--            내용bar-->
                 <input style="width: 450px;
                           height: 30px;
                           border-radius: 15px;

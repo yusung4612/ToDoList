@@ -5,12 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-<!--<span th:style="'background-image:url('+ @{/img/bg.jpg} +');'"></span>-->
+
 <h1 style="text-align: center; font-size: 80px; margin-top: 3%">검색 결과</h1>
-    <div th:each=" todo : ${todolist}">
-<!--        <h1 style="text-align: center; font-size: 80px; margin-top: 3%">검색 결과</h1>-->
-        <div th:text="${todo.getContent()}" style="text-align: center; font-size: 20px; margin-top: 3%"></div>
-    </div>
+<div th:each=" todo : ${todolist}">
+    <div th:text="${todo.getContent()}" style="text-align: center; font-size: 20px; margin-top: 3%"></div>
+</div>
 
 </body>
 </html>

@@ -18,17 +18,17 @@ public class Member extends Timestamped {
     private Long id;
 
     @Column(nullable = false)
-    private String membername;
+    private String membername; //멤버이름
 
     @Column(nullable = false)
-    private Integer age;
+    private Integer age; //나이
 
     @Column(nullable = false, unique = true)
-    private String email;
+    private String email; //이메일
 
     @JsonIgnore
     @Column(nullable = false)
-    private String password;
+    private String password; //패스워드
 
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Todo> content;
